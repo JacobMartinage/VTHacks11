@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+    <title>Job Scraper</title>
+</head>
+<body>
+    <h1>Indeed Job Scraper</h1>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        {{ form.keyword.label }}: {{ form.keyword() }}
+        {{ form.submit() }}
+    </form>
+
+    <h2>Results</h2>
+    <ul>
+        {% for job in jobs %}
+        <li>
+            <strong>Title:</strong> {{ job.title }} <br>
+            <strong>Company:</strong> {{ job.company }} <br>
+            <strong>Location:</strong> {{ job.location }} <br>
+            <strong>Summary:</strong> {{ job.summary }} <br>
+            <strong>Experience Required:</strong> {{ job.experience_required }} <br>
+            <strong>Degree Required:</strong> {{ job.degree_required }} <br>
+            <strong>Work Authorization Required:</strong> {{ job.work_auth_required }} <br>
+            <hr>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
