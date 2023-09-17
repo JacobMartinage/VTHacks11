@@ -6,21 +6,8 @@ const { exec } = require('child_process');
 require('dotenv').config();
 
 
-
-
-
-
-
 const app = express();
 const PORT = 3000;
-
-// OpenAI API setup
-
-    //  The API is currently in beta and a lot of the endpoints are subject to change.
-    //  The default version is the latest supported version of the API.
-    //  If you need to use a specific version, set it here.
-
-
 
 
 
@@ -83,9 +70,10 @@ function fetchTranscript(videoID) {
 
 
 async function summarize(transcript) {
+    console.log("Summarize the following transcript:  " + transcript);  
     try {
         const params = {
-            prompt: "Summarize the following transcript:\n\n" + transcript,
+            prompt: "Summarize the following transcript:  " + transcript,
             max_tokens: 200
         }
 
