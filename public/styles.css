@@ -51,7 +51,7 @@ body {
 }
 
 #summary {
-  margin-bottom: 20px;
+  margin-bottom: 10%;
   margin-left: 5%;
   margin-right: 5%;
   height: 40px;
@@ -137,4 +137,8 @@ body {
     background-image: linear-gradient(to right, #ccc, #333, #ccc);
     margin-bottom: 5%;
     justify-self: left;
+}
+
+#subbutton {
+  margin-bottom: 20%;
 }

@@ -8,7 +8,6 @@
     <title>YouTube Transcript Summarizer</title>
   </head>
   <body>
-    <script src="script.js"></script>
     <script>
       var i = 0;
       var txt = "Summarizing your video...";
@@ -16,7 +15,7 @@
       var loops = 0;
       var x = 0;
 
-      const typeWriter = async () => {
+      function typeWriter() {
         if (i < txt.length && done == false) {
           x = 0;
           document.getElementById("loading").innerHTML += txt.charAt(i);
@@ -41,7 +40,7 @@
             loops++;
           }
         }
-        if (loops == 3) {
+        if (loops == 2) {
           document.getElementById("loading").style.display = "none";
           document.getElementById("summary").style.display = "block";
           document.getElementById("topbar").style.display = "flex";
@@ -69,7 +68,7 @@
       />
       <div id="gap"></div>
       <div class="buttonedge">
-        <button onclick="showText()" type="submit">Generate Summary</button>
+        <button id="subbutton" ondblclick="showText()" type="submit">Generate Summary</button>
       </div>
       <script type="text/javascript">
         function showText() { 
@@ -115,5 +114,6 @@
 
     <p id="summary" class="p2"></p>
     <h1 id="loading"></h1>
+    <script src="script.js"></script>
   </body>
 </html>

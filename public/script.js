@@ -20,6 +20,7 @@ form.addEventListener('submit', async (e) => {
             summaryDiv.textContent = data.error;
         } else {
             summaryDiv.textContent = data.summary;
+            document.getElementById("summary").innerHTML = data.summary;
         }
     } catch (err) {
         summaryDiv.textContent = 'Error fetching summary. Please try again later.';
