@@ -1,17 +1,130 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YouTube Transcript Summarizer</title>
-</head>
-<body>
-    <form id="videoForm">
-        <input type="url" id="videoLink" placeholder="Enter YouTube video link" required>
-        <button type="submit">Get Summary</button>
-    </form>
-    <div id="summary"></div>
+<link rel="stylesheet" href="styles.css" />
 
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>YouTube Transcript Summarizer</title>
+  </head>
+  <body onload="typeWriter()">
     <script src="app.js"></script>
-</body>
+    <script>
+      var i = 0;
+      var txt = "Summarizing your video...";
+      var speed = 120;
+      var speed2 = 60;
+      var done = false;
+      x = 0;
+
+      const delay = (ms) => new Promise((res) => setTimeout(res, ms));
+
+      const typeWriter = async () => {
+        if (i < txt.length && done == false) {
+          x = 0;
+          document.getElementById("loading").innerHTML += txt.charAt(i);
+          i++;
+          setTimeout(typeWriter, speed);
+        } else if (x < 5) {
+          done = true;
+          if (x % 2 == 0) {
+            document.getElementById("loading").innerHTML =
+              txt.substring(0, i) + ".";
+          } else {
+            document.getElementById("loading").innerHTML = txt.substring(0, i);
+          }
+          x++;
+          setTimeout(typeWriter, 400);
+        } else if (i >= 0 && done == true) {
+          document.getElementById("loading").innerHTML = txt.substring(0, i);
+          i--;
+          setTimeout(typeWriter, speed2);
+          if (i == -1) {
+            done = false;
+          }
+        }
+      };
+    </script>
+    <p id="title" class="p1">YTSummary</p>
+    <div class="line"></div>
+    <p id="subtitle" class="p1">YouTube Transcript Summarizer</p>
+    <p id="subsubtitle" class="p1">
+      Enter a YouTube video link below to generate a summary of the video's
+      transcript.
+    </p>
+    <form id="videoForm" class="p1">
+      <input
+        type="url"
+        id="videoLink"
+        placeholder="Enter YouTube video link"
+        required
+      />
+      <div id="gap"></div>
+      <div class="buttonedge">
+        <button type="submit">Generate Summary</button>
+      </div>
+    </form>
+    <span id="topbar">
+      <div class="backedge">
+        <button id="back" class="p2" onClick="returnHome()">Return Home</button>
+      </div>
+      <h1 id="summ" class="p2">Summary</h1>
+      <div class="resumedge">
+        <button id="resum" class="p2" onClick="summarize(summary)">
+          Summarize further
+        </button>
+      </div>
+    </span>
+
+    <script>
+      function returnHome() {
+        document.getElementById("videoForm").style.display = "block";
+        document.getElementById("title").style.display = "block";
+        document.getElementById("summary").style.display = "none";
+        document.getElementById("topbar").style.display = "none";
+        document.getElementById("resum").style.display = "none";
+        document.getElementById("summ").style.display = "none";
+        document.getElementById("subtitle").style.display = "block";
+        document.getElementById("subsubtitle").style.display = "block";
+      }
+    </script>
+
+    <p id="summary" class="p2">
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur ab
+      excepturi culpa non nam, reprehenderit provident, atque quae, quisquam ea
+      quas sunt aspernatur. Ducimus temporibus rerum placeat quos repudiandae
+      unde.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur ab
+      excepturi culpa non nam, reprehenderit provident, atque quae, quisquam ea
+      quas sunt aspernatur. Ducimus temporibus rerum placeat quos repudiandae
+      unde.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur ab
+      excepturi culpa non nam, reprehenderit provident, atque quae, quisquam ea
+      quas sunt aspernatur. Ducimus temporibus rerum placeat quos repudiandae
+      unde.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur ab
+      excepturi culpa non nam, reprehenderit provident, atque quae, quisquam ea
+      quas sunt aspernatur. Ducimus temporibus rerum placeat quos repudiandae
+      unde.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur ab
+      excepturi culpa non nam, reprehenderit provident, atque quae, quisquam ea
+      quas sunt aspernatur. Ducimus temporibus rerum placeat quos repudiandae
+      unde.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur ab
+      excepturi culpa non nam, reprehenderit provident, atque quae, quisquam ea
+      quas sunt aspernatur. Ducimus temporibus rerum placeat quos repudiandae
+      unde.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur ab
+      excepturi culpa non nam, reprehenderit provident, atque quae, quisquam ea
+      quas sunt aspernatur. Ducimus temporibus rerum placeat quos repudiandae
+      unde.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur ab
+      excepturi culpa non nam, reprehenderit provident, atque quae, quisquam ea
+      quas sunt aspernatur. Ducimus temporibus rerum placeat quos repudiandae
+      unde.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur ab
+      excepturi culpa non nam, reprehenderit provident, atque quae, quisquam ea
+      quas sunt aspernatur. Ducimus temporibus rerum placeat quos repudiandae
+      unde.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur ab
+      excepturi culpa non nam, reprehenderit provident, atque quae, quisquam ea
+      quas sunt aspernatur. Ducimus temporibus rerum placeat quos repudiandae
+      unde.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur ab
+      excepturi culpa non nam, reprehenderit provident, atque quae, quisquam ea
+      quas sunt aspernatur. Ducimus temporibus rerum placeat quos repudiandae
+      unde.
+    </p>
+    <h1 id="loading"></h1>
+  </body>
 </html>
