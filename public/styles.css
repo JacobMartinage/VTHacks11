@@ -10,6 +10,7 @@ button {
 #videoLink {
   background-color: #fff3ed;
   border-width: 1px;
+  margin-bottom: 1%;
 }
 
 input {
@@ -92,14 +93,20 @@ body {
   border-width: 3px;
 }
 
+#back {
+  padding-left: 21%;
+  width: 180px;
+}
+
+#resum {
+  padding-left: 18%;
+}
+
 #loading {
   text-align: center;
   font-size: 50px;
   margin-top: 10%;
   display: none;
-}
-
-.p1 {
 }
 
 .p2 {
@@ -121,8 +128,9 @@ body {
   margin-bottom: 5.5%;
 }
 
-.line {
+#line {
     border: 0;
+    margin-left: -1%;
     height: 3px;
     width: 110%;
     background: #333;

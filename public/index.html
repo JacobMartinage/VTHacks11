@@ -7,24 +7,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>YouTube Transcript Summarizer</title>
   </head>
-  <body onload="typeWriter()">
+  <body>
     <script src="app.js"></script>
     <script>
       var i = 0;
       var txt = "Summarizing your video...";
-      var speed = 120;
-      var speed2 = 60;
       var done = false;
-      x = 0;
-
-      const delay = (ms) => new Promise((res) => setTimeout(res, ms));
+      var loops = 0;
+      var x = 0;
 
       const typeWriter = async () => {
         if (i < txt.length && done == false) {
           x = 0;
           document.getElementById("loading").innerHTML += txt.charAt(i);
           i++;
-          setTimeout(typeWriter, speed);
+          setTimeout(typeWriter, 120);
         } else if (x < 5) {
           done = true;
           if (x % 2 == 0) {
@@ -38,15 +35,26 @@
         } else if (i >= 0 && done == true) {
           document.getElementById("loading").innerHTML = txt.substring(0, i);
           i--;
-          setTimeout(typeWriter, speed2);
+          setTimeout(typeWriter, 60);
           if (i == -1) {
             done = false;
+            loops++;
           }
+        }
+        if (loops == 3) {
+          document.getElementById("loading").style.display = "none";
+          document.getElementById("summary").style.display = "block";
+          document.getElementById("topbar").style.display = "flex";
+          document.getElementById("resum").style.display = "flex";
+          document.getElementById("summ").style.display = "flex";
+          document.getElementById("back").style.display = "flex";
+          loops = 0;
+          i = 0;
         }
       };
     </script>
     <p id="title" class="p1">YTSummary</p>
-    <div class="line"></div>
+    <div id="line"></div>
     <p id="subtitle" class="p1">YouTube Transcript Summarizer</p>
     <p id="subsubtitle" class="p1">
       Enter a YouTube video link below to generate a summary of the video's
@@ -61,8 +69,22 @@
       />
       <div id="gap"></div>
       <div class="buttonedge">
-        <button type="submit">Generate Summary</button>
+        <button onclick="showText()" type="submit">Generate Summary</button>
       </div>
+      <script type="text/javascript">
+        function showText() { 
+            document.getElementById("title").style.display="none";
+            document.getElementById("subtitle").style.display="none";
+            document.getElementById("subsubtitle").style.display="none";
+            document.getElementById("videoForm").style.display="none";
+            document.getElementById("line").style.display="none";
+            document.getElementById("loading").style.display="block";
+            document.getElementById("loading").style.textAlign = "center";
+            document.getElementById("loading").style.marginTop = "10%";
+            typeWriter();
+        }
+        
+      </script>
     </form>
     <span id="topbar">
       <div class="backedge">
@@ -78,53 +100,20 @@
 
     <script>
       function returnHome() {
-        document.getElementById("videoForm").style.display = "block";
-        document.getElementById("title").style.display = "block";
         document.getElementById("summary").style.display = "none";
         document.getElementById("topbar").style.display = "none";
         document.getElementById("resum").style.display = "none";
         document.getElementById("summ").style.display = "none";
+        document.getElementById("back").style.display = "none";
+        document.getElementById("videoForm").style.display = "block";
+        document.getElementById("title").style.display = "block";
         document.getElementById("subtitle").style.display = "block";
         document.getElementById("subsubtitle").style.display = "block";
+        document.getElementById("line").style.display = "block";
       }
     </script>
 
-    <p id="summary" class="p2">
-      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur ab
-      excepturi culpa non nam, reprehenderit provident, atque quae, quisquam ea
-      quas sunt aspernatur. Ducimus temporibus rerum placeat quos repudiandae
-      unde.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur ab
-      excepturi culpa non nam, reprehenderit provident, atque quae, quisquam ea
-      quas sunt aspernatur. Ducimus temporibus rerum placeat quos repudiandae
-      unde.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur ab
-      excepturi culpa non nam, reprehenderit provident, atque quae, quisquam ea
-      quas sunt aspernatur. Ducimus temporibus rerum placeat quos repudiandae
-      unde.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur ab
-      excepturi culpa non nam, reprehenderit provident, atque quae, quisquam ea
-      quas sunt aspernatur. Ducimus temporibus rerum placeat quos repudiandae
-      unde.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur ab
-      excepturi culpa non nam, reprehenderit provident, atque quae, quisquam ea
-      quas sunt aspernatur. Ducimus temporibus rerum placeat quos repudiandae
-      unde.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur ab
-      excepturi culpa non nam, reprehenderit provident, atque quae, quisquam ea
-      quas sunt aspernatur. Ducimus temporibus rerum placeat quos repudiandae
-      unde.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur ab
-      excepturi culpa non nam, reprehenderit provident, atque quae, quisquam ea
-      quas sunt aspernatur. Ducimus temporibus rerum placeat quos repudiandae
-      unde.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur ab
-      excepturi culpa non nam, reprehenderit provident, atque quae, quisquam ea
-      quas sunt aspernatur. Ducimus temporibus rerum placeat quos repudiandae
-      unde.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur ab
-      excepturi culpa non nam, reprehenderit provident, atque quae, quisquam ea
-      quas sunt aspernatur. Ducimus temporibus rerum placeat quos repudiandae
-      unde.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur ab
-      excepturi culpa non nam, reprehenderit provident, atque quae, quisquam ea
-      quas sunt aspernatur. Ducimus temporibus rerum placeat quos repudiandae
-      unde.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur ab
-      excepturi culpa non nam, reprehenderit provident, atque quae, quisquam ea
-      quas sunt aspernatur. Ducimus temporibus rerum placeat quos repudiandae
-      unde.
-    </p>
+    <p id="summary" class="p2"></p>
     <h1 id="loading"></h1>
   </body>
 </html>
