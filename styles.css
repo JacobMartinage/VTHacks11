@@ -1,0 +1,132 @@
+@import url("https://fonts.googleapis.com/css?family=Ubuntu");
+
+#videoForm,
+input,
+button {
+  text-align: center;
+  font-family: ubuntu;
+}
+
+#videoLink {
+  background-color: #fff3ed;
+  border-width: 1px;
+}
+
+input {
+  width: 480px;
+  height: 40px;
+  font-size: 20px;
+}
+
+button {
+  margin-top: 24px;
+  width: 210px;
+  height: 55px;
+  align-items: center;
+  font-size: 20px;
+  border-radius: 50px;
+  font-size: 16px;
+  background-color: #ffd4b9;
+  border-color: #ffc099;
+  border-width: 4px;
+  transition: 0.5s;
+  border-style: solid;
+}
+
+button:hover {
+  background-color: #ffc9a7;
+  color: black;
+  cursor: pointer;
+}
+
+#title {
+  text-align: center;
+  font-size: 60px;
+}
+
+body {
+  background-color: #fff0e8;
+  font-family: ubuntu;
+}
+
+#summary {
+  margin-bottom: 20px;
+  margin-left: 5%;
+  margin-right: 5%;
+  height: 40px;
+  border-radius: 20px;
+  font-size: 24px;
+  text-align: center;
+}
+
+#summ {
+  text-align: center;
+  margin: 46px 260px 35px;
+  font-size: 60px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#topbar {
+  writing-mode: horizontal-tb;
+  inline-size: 100%;
+  block-size: 13em;
+  padding: 10px;
+  display: flex;
+  grid-template-columns: 100px 100px 100px;
+  justify-items: center;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+#back,
+#resum {
+  font-size: 30px;
+  border-radius: 20px;
+  font-size: 16px;
+  width: 220px;
+  height: 40px;
+  border-width: 3px;
+}
+
+#loading {
+  text-align: center;
+  font-size: 50px;
+  margin-top: 10%;
+  display: none;
+}
+
+.p1 {
+}
+
+.p2 {
+  display: none;
+}
+
+#subtitle,
+#subsubtitle {
+  text-align: center;
+  margin-bottom: 1%;
+  margin-top: 0%;
+}
+
+#subtitle {
+  font-size: 24px;
+}
+
+#subsubtitle {
+  margin-bottom: 5.5%;
+}
+
+.line {
+    border: 0;
+    height: 3px;
+    width: 110%;
+    background: #333;
+    background-image: linear-gradient(to right, #ccc, #333, #ccc);
+    margin-bottom: 5%;
+    justify-self: left;
+}
